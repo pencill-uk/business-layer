@@ -1,0 +1,45 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"accountName": "Anu",
+			"accountType": "Parent",
+			"accountStatus": false,
+			"createdAt": "2022-09-26T23:47:21.247Z",
+			"updatedAt": "2022-09-26T23:48:54.885Z",
+			"users_permissions_users": [
+				{
+					"id": 1,
+					"username": "ram",
+					"email": "ram@anogaa.com",
+					"provider": "local",
+					"confirmed": true,
+					"blocked": false,
+					"createdAt": "2022-07-30T14:40:30.321Z",
+					"updatedAt": "2022-07-30T14:40:30.321Z"
+				}
+			],
+			"children": [
+				{
+					"id": 1,
+					"nickName": "First Child",
+					"firstName": "Anyboy",
+					"lastName": "AG",
+					"dateOfBirth": "2014-09-02",
+					"gender": "male",
+					"createdAt": "2022-09-26T23:48:46.225Z",
+					"updatedAt": "2022-09-27T10:22:58.507Z",
+					"publishedAt": "2022-09-27T10:22:58.490Z"
+				}
+			]
+		}
+	],
+	"meta": {
+		"pagination": {
+			"page": 1,
+			"pageSize": 25,
+			"pageCount": 1,
+			"total": 1
+		}
+	}
+}

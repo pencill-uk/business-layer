@@ -1,0 +1,13 @@
+{
+    "id": 1,
+    "attributes": {
+        "nickName": "Didi",
+        "firstName": "Diya",
+        "lastName": "Gobinath",
+        "dateOfBirth": "2011-01-29",
+        "gender": "Girl",
+        "createdAt": "2022-07-18T13:23:48.595Z",
+        "updatedAt": "2022-07-18T13:23:55.230Z",
+        "publishedAt": "2022-07-18T13:23:55.226Z"
+    }
+}

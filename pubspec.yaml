@@ -1,0 +1,20 @@
+name: business_layer
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+publish_to: none
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies:
+  bloc:
+  equatable: ^2.0.5
+  data_layer:
+    git:
+      url: https://github.com/pencill-uk/data-layer.git
+      ref: main
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.16.0
