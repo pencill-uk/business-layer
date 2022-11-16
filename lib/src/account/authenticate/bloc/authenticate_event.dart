@@ -6,13 +6,16 @@ abstract class AuthenticateEvent extends Equatable {
 }
 
 class SignInRequested extends AuthenticateEvent {
-  final String? identifier;
-  final String? password;
+  late final String identifier;
+  late final String password;
 
-  SignInRequested({this.identifier, this.password});
+  SignInRequested({required String pIdentifier, required String pPassword}) {
+    identifier = pIdentifier;
+    password = pPassword;
+  }
 
   @override
-  List<Object> get props => [identifier!, password!];
+  List<Object> get props => [identifier, password];
 }
 
 class SignOutRequested extends AuthenticateEvent {

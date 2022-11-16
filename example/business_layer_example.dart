@@ -2,7 +2,7 @@ import 'package:business_layer/account_entity.dart';
 
 void main() {
   AuthenticateBloc bloc = AuthenticateBloc();
-  bloc.add(SignInRequested());
+  bloc.add(SignInRequested(pIdentifier: "b6@anogaa.com", pPassword: "qazxsw"));
 
   Account account = Account(
       id: 0,
@@ -19,5 +19,5 @@ void main() {
           smsOptIn: true,
           marketingOptIn: true,
           postalOptIn: false));
-  bloc.add(CreateAccountRequested(account: account));
+  // bloc.add(CreateAccountRequested(account: account));
 }

@@ -63,7 +63,6 @@ class Account {
   }
 
   factory Account.fromMap(Map<String, dynamic> map) {
-    print("Account From Map : $map");
     return Account(
       id: map['id']?.toInt() ?? 0,
       accountName: map['accountName'] ?? '',

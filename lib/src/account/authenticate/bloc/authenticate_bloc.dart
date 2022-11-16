@@ -16,12 +16,17 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
     on<SignInRequested>((event, emit) async {
       emit(SignInInProgress());
 
-      Future<String> accountJson = _accountRepository.getAccount('1');
+      Future<String> accountJson = _accountRepository.authenticateAccount(
+          pIdentifier: event.identifier, pPassword: event.password);
 
       accountJson.then((value) {
-        final decodedJson = json.decode(value);
-        Account account = Account.fromMap(decodedJson['data']);
-        emit(AuthenticationSuccess(account: account));
+        if (value.isNotEmpty || value != "") {
+          final decodedJson = json.decode(value);
+          Account account = Account.fromMap(decodedJson['data']);
+          emit(AuthenticationSuccess(account: account));
+        } else {
+          emit(AuthenticationFailure());
+        }
       });
       // var result;
       // if (event.identifier == null || event.password == null) {
