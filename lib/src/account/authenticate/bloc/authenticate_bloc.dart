@@ -16,8 +16,10 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
     on<SignInRequested>((event, emit) async {
       emit(SignInInProgress());
 
-      Future<String> accountJson = _accountRepository.authenticateAccount(
-          pIdentifier: event.identifier, pPassword: event.password);
+      Future<String> accountJson =
+          (await _accountRepository.authenticateAccount(
+              pIdentifier: event.identifier,
+              pPassword: event.password)) as Future<String>;
 
       accountJson.then((value) {
         if (value.isNotEmpty || value != "") {
