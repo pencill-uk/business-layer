@@ -16,49 +16,18 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
     on<SignInRequested>((event, emit) async {
       emit(SignInInProgress());
 
-      Future<String> accountJson =
-          (await _accountRepository.authenticateAccount(
-              pIdentifier: event.identifier,
-              pPassword: event.password)) as Future<String>;
+      var accountJson = await _accountRepository.authenticateAccount(
+          pIdentifier: event.identifier, pPassword: event.password);
 
-      accountJson.then((value) {
-        if (value.isNotEmpty || value != "") {
-          final decodedJson = json.decode(value);
-          Account account = Account.fromMap(decodedJson['data']);
-          emit(AuthenticationSuccess(account: account));
-        } else {
-          emit(AuthenticationFailure());
-        }
-      });
-      // var result;
-      // if (event.identifier == null || event.password == null) {
-      //   try {
-      //     result = await _accountRepository.checkSignInStatus();
-      //     if (result != null && result is Account) {
-      //       emit(AuthenticationSuccess(account: result));
-      //     } else {
-      //       emit(AuthenticationFailure());
-      //     }
-      //   } catch (e) {
-      //     print(e);
-      //     emit(AuthenticationFailure());
-      //     return;
+      // accountJson.then((value) {
+      //   if (value.isNotEmpty || value != "") {
+      //     final decodedJson = json.decode(value);
+      //     Account account = Account.fromMap(decodedJson['data']);
+      //     emit(AuthenticationSuccess(account: account));
+      //   } else {
+      emit(AuthenticationFailure());
       //   }
-      // } else if (event.identifier != null && event.password != null) {
-      //   try {
-      //     result = await _accountRepository.authenticateAccount(
-      //         pIdentifier: event.identifier!, pPassword: event.password!);
-      //     if (result != null && result is Account) {
-      //       emit(AuthenticationSuccess(account: result));
-      //     } else {
-      //       emit(AuthenticationFailure());
-      //     }
-      //   } catch (e) {
-      //     print(e);
-      //     emit(AuthenticationFailure());
-      //     return;
-      //   }
-      // }
+      // });
     });
 
     on<SignOutRequested>((event, emit) async {
