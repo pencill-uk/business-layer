@@ -16,18 +16,20 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
     on<SignInRequested>((event, emit) async {
       emit(SignInInProgress());
 
-      var accountJson = await _accountRepository.authenticateAccount(
+      String accountJson = await _accountRepository.authenticateAccount(
           pIdentifier: event.identifier, pPassword: event.password);
 
-      // accountJson.then((value) {
-      //   if (value.isNotEmpty || value != "") {
-      //     final decodedJson = json.decode(value);
-      //     Account account = Account.fromMap(decodedJson['data']);
-      //     emit(AuthenticationSuccess(account: account));
-      //   } else {
-      emit(AuthenticationFailure());
-      //   }
-      // });
+      try {
+        if (accountJson.isNotEmpty || accountJson != "") {
+          final decodedJson = json.decode(accountJson);
+          Account account = Account.fromMap(decodedJson['data']);
+          emit(AuthenticationSuccess(account: account));
+        } else {
+          emit(AuthenticationFailure());
+        }
+      } catch (e) {
+        emit(AuthenticationFailure());
+      }
     });
 
     on<SignOutRequested>((event, emit) async {
