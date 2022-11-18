@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
-import 'package:data_layer/account_repositories.dart';
+import 'package:data_layer/account_repo.dart';
 
 import '../../../model/account.dart';
 
@@ -14,22 +14,22 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
 
   AuthenticateBloc() : super(SignInUnknown()) {
     on<SignInRequested>((event, emit) async {
-      emit(SignInInProgress());
+      // emit(SignInInProgress());
 
-      String accountJson = await _accountRepository.authenticateAccount(
-          pIdentifier: event.identifier, pPassword: event.password);
+      // String accountJson = await _accountRepository.(
+      //     pIdentifier: event.identifier, pPassword: event.password);
 
-      try {
-        if (accountJson.isNotEmpty || accountJson != "") {
-          final decodedJson = json.decode(accountJson);
-          Account account = Account.fromMap(decodedJson['data']);
-          emit(AuthenticationSuccess(account: account));
-        } else {
-          emit(AuthenticationFailure());
-        }
-      } catch (e) {
-        emit(AuthenticationFailure());
-      }
+      // try {
+      //   if (accountJson.isNotEmpty || accountJson != "") {
+      //     final decodedJson = json.decode(accountJson);
+      //     Account account = Account.fromMap(decodedJson['data']);
+      //     emit(AuthenticationSuccess(account: account));
+      //   } else {
+      //     emit(AuthenticationFailure());
+      //   }
+      // } catch (e) {
+      //   emit(AuthenticationFailure());
+      // }
     });
 
     on<SignOutRequested>((event, emit) async {
@@ -69,7 +69,7 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
 
       var result;
       try {
-        result = await _accountRepository.postAccount(event.account.toMap());
+        result = await _accountRepository.createAccount(event.account.toMap());
         if (result != null && result is Account) {
           emit(AuthenticationSuccess(account: result));
         } else {
