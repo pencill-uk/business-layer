@@ -32,15 +32,15 @@ class CreateAccountRequested extends AuthenticateEvent {
   List<Object> get props => [account];
 }
 
-class CreateUserRequested extends AuthenticateEvent {
-  final String identifier;
-  final String password;
+// class CreateUserRequested extends AuthenticateEvent {
+//   final String identifier;
+//   final String password;
 
-  CreateUserRequested({required this.identifier, required this.password});
+//   CreateUserRequested({required this.identifier, required this.password});
 
-  @override
-  List<Object> get props => [identifier, password];
-}
+//   @override
+//   List<Object> get props => [identifier, password];
+// }
 
 class PasswordResetRequested extends AuthenticateEvent {
   final String identifier;

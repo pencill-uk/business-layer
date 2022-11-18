@@ -45,26 +45,6 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
     });
 
     on<CreateUserRequested>((event, emit) async {
-      // emit(CreateUserInProgress());
-
-      // try {
-      //   await _userRepository.createUser(
-      //       pIdentifier: event.identifier, pPassword: event.password);
-      //   emit(AuthenticationSuccess(
-      //       user: User(
-      //           meta: Meta(
-      //               pagination:
-      //                   Pagination(page: 1, pageCount: 1, pageSize: 1)))));
-      // } catch (e) {
-      //   if (kDebugMode) {
-      //     print(e);
-      //   }
-      //   emit(AuthenticationFailure());
-      //   return;
-      // }
-    });
-
-    on<CreateUserRequested>((event, emit) async {
       //   emit(CreateUserInProgress());
 
       //   var result;
@@ -81,26 +61,5 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
       //     return;
       //   }
     });
-
-    // on<CreateUserRequested>((event, emit) async {
-    //   emit(CreateUserProgressing());
-
-    //   var result;
-    //   try {
-    //     result = await _userRepository.createUser(
-    //         pIdentifier: event.identifier, pPassword: event.password);
-    //     if (result != null && result is User) {
-    //       emit(AuthenticationSuccess(user: result));
-    //     } else {
-    //       emit(AuthenticationFailure());
-    //     }
-    //   } catch (e) {
-    //     if (kDebugMode) {
-    //       print(e);
-    //     }
-    //     emit(AuthenticationFailure());
-    //     return;
-    //   }
-    // });
   }
 }

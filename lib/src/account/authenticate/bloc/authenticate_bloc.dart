@@ -44,25 +44,25 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
       // }
     });
 
-    on<CreateUserRequested>((event, emit) async {
-      // emit(CreateAccountInProgress());
+    // on<CreateUserRequested>((event, emit) async {
+    // emit(CreateAccountInProgress());
 
-      // try {
-      //   await _accountRepository.createUser(
-      //       pIdentifier: event.identifier, pPassword: event.password);
-      //   emit(AuthenticationSuccess(
-      //       account: Account(
-      //           meta: Meta(
-      //               pagination:
-      //                   Pagination(page: 1, pageCount: 1, pageSize: 1)))));
-      // } catch (e) {
-      //   if (kDebugMode) {
-      //     print(e);
-      //   }
-      //   emit(AuthenticationFailure());
-      //   return;
-      // }
-    });
+    // try {
+    //   await _accountRepository.createUser(
+    //       pIdentifier: event.identifier, pPassword: event.password);
+    //   emit(AuthenticationSuccess(
+    //       account: Account(
+    //           meta: Meta(
+    //               pagination:
+    //                   Pagination(page: 1, pageCount: 1, pageSize: 1)))));
+    // } catch (e) {
+    //   if (kDebugMode) {
+    //     print(e);
+    //   }
+    //   emit(AuthenticationFailure());
+    //   return;
+    // }
+    // });
 
     on<CreateAccountRequested>((event, emit) async {
       emit(CreateAccountInProgress());
