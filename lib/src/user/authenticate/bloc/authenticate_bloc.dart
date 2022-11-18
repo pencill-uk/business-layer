@@ -22,7 +22,7 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
       try {
         if (userJson.isNotEmpty || userJson != "") {
           final decodedJson = json.decode(userJson);
-          User user = User.fromMap(decodedJson['data']);
+          User user = User.fromMap(decodedJson);
           emit(AuthenticationSuccess(user: user));
         } else {
           emit(AuthenticationFailure());
