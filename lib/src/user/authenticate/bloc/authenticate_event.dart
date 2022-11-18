@@ -24,12 +24,17 @@ class SignOutRequested extends AuthenticateEvent {
 }
 
 class CreateUserRequested extends AuthenticateEvent {
-  final User user;
+  late final String identifier;
+  late final String password;
 
-  CreateUserRequested({required this.user});
+  CreateUserRequested(
+      {required String pIdentifier, required String pPassword}) {
+    identifier = pIdentifier;
+    password = pPassword;
+  }
 
   @override
-  List<Object> get props => [user];
+  List<Object> get props => [identifier, password];
 }
 
 class PasswordResetRequested extends AuthenticateEvent {
