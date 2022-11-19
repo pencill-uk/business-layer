@@ -1,0 +1,26 @@
+{
+    "id": 2,
+    "username": "b6@pencill.co.uk",
+    "email": "b6@pencill.co.uk",
+    "provider": "local",
+    "confirmed": true,
+    "blocked": false,
+    "createdAt": "2022-11-16T23:24:30.339Z",
+    "updatedAt": "2022-11-18T23:43:13.783Z",
+    "role": {
+        "id": 1,
+        "name": "Authenticated",
+        "description": "Default role given to authenticated user.",
+        "type": "authenticated",
+        "createdAt": "2022-11-04T20:17:10.650Z",
+        "updatedAt": "2022-11-04T20:17:10.650Z"
+    },
+    "account": {
+        "id": 2,
+        "accountName": "API Account",
+        "accountType": "Parent",
+        "accountStatus": true,
+        "createdAt": "2022-11-06T19:53:07.355Z",
+        "updatedAt": "2022-11-06T19:53:07.355Z"
+    }
+}
