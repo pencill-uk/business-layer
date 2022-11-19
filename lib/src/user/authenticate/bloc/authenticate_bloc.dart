@@ -26,6 +26,7 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
             String userJson = await _userRepository.authenticateUser(
                 pIdentifier: event.identifier, pPassword: event.password);
 
+            print("SignInRequested | authenticateUser | userJson : $userJson");
             if (userJson.isNotEmpty || userJson != "") {
               final decodedJson = json.decode(userJson);
               User user = User.fromMap(decodedJson);
