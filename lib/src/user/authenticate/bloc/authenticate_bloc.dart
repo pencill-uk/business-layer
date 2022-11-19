@@ -22,22 +22,27 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
           final user = User.fromJson(jsonDecode(userJson));
           emit(AuthenticationSuccess(user: user));
         } else {
-          String userJson = await _userRepository.authenticateUser(
-              pIdentifier: event.identifier, pPassword: event.password);
-
           try {
+            String userJson = await _userRepository.authenticateUser(
+                pIdentifier: event.identifier, pPassword: event.password);
+
             if (userJson.isNotEmpty || userJson != "") {
               final decodedJson = json.decode(userJson);
               User user = User.fromMap(decodedJson);
+
+              print("SignInRequested | Success: $user");
               emit(AuthenticationSuccess(user: user));
             } else {
+              print("SignInRequested | authenticateUser | userJson is empty");
               emit(AuthenticationFailure());
             }
           } catch (e) {
+            print("SignInRequested | authenticateUser: $e");
             emit(AuthenticationFailure());
           }
         }
       } catch (e) {
+        print("SignInRequested | getCurrentUser: $e");
         emit(AuthenticationFailure());
       }
     });
