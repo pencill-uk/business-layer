@@ -17,6 +17,7 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
       emit(SignInInProgress());
 
       try {
+        print("SignInRequested | Before getCurrentUser");
         final userJson = await _userRepository.getCurrentUser();
         print("SignInRequested | Check $userJson");
         if (userJson != "") {
