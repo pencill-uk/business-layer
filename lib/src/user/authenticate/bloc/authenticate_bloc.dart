@@ -18,8 +18,8 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
 
       try {
         final userJson = await _userRepository.getCurrentUser();
+        print("SignInRequested | Check $userJson");
         if (userJson != "") {
-          print("SignInRequested | userJson not Empty $userJson");
           final user = User.fromJson(jsonDecode(userJson));
           emit(AuthenticationSuccess(user: user));
         } else {
